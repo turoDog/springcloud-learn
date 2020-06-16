@@ -1,0 +1,11 @@
+server:
+  port: 1112
+
+eureka:
+  # 主机
+  instance:
+    hostname: peer1
+
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:1113/eureka/
