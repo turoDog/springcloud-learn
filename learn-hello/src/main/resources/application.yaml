@@ -1,5 +1,9 @@
-spring:
-  application:
-    name: hello
 server:
   port: 8888
+spring:
+  application:
+    name: hello-serice
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
