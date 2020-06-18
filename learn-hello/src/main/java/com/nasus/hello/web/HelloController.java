@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Project Name:sclearn <br/>
@@ -29,6 +30,12 @@ public class HelloController {
     @GetMapping("/hello")
     public String index(){
         ServiceInstance instance = serviceInstance();
+        // 让线程等待几秒钟
+        try {
+            Thread.sleep(new Random().nextInt(3000));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String x = String.format("Host: %s, ServiceId: %s\n", instance.getHost(), instance.getServiceId());
         System.out.println(x);
         return "Hello World!";
@@ -44,7 +51,7 @@ public class HelloController {
         List<ServiceInstance> list = client.getInstances(registration.getServiceId());
         if (list != null && list.size() > 0) {
             for(ServiceInstance itm : list){
-                if(itm.getPort() == 8888)
+                if(itm.getPort() == 8081 || itm.getPort() == 8082)
                     return itm;
             }
         }

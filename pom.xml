@@ -17,6 +17,7 @@
     <modules>
         <module>learn-hello</module>
         <module>learn-eureka</module>
+        <module>learn-ribbon</module>
     </modules>
 
     <properties>

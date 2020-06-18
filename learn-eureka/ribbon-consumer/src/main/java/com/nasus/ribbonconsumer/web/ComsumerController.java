@@ -1,5 +1,6 @@
 package com.nasus.ribbonconsumer.web;
 
+import com.nasus.ribbonconsumer.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,11 +17,11 @@ import org.springframework.web.client.RestTemplate;
 public class ComsumerController {
 
     @Autowired
-    RestTemplate restTemplate;
+    HelloService helloService;
 
     @GetMapping("/ribbon-consumer")
     public String helloConsumer(){
-        return restTemplate.getForEntity("http://HELLO-SERVICE/hello", String.class).getBody();
+        return helloService.hello();
     }
 
 }
